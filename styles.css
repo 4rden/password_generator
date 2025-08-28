@@ -48,9 +48,12 @@ input[type='checkbox'] {
     height: 16px;
     width: 16px;
     background-color: azure;
+    transition: ease .1s;
 
 }
 
 input[type='checkbox']:checked{ 
     background-color: green;
+    transition: ease .1s;
+    transform: translateX(16px);
 }
