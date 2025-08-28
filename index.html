@@ -7,14 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-<script src="script.js"></script>
     <div id="main">
         <p>Please select at least one option</p>
         <div class = 'control-container'>
-        <p>Include Uppercase</p>
-        <input type='checkbox' class="check">
+            <p>Include Symbols</p>
+            <div class="toggle-container" id="toggle1">
+                <input type='checkbox' id="toggle" onclick="toggleOn(this,'toggle1')">
+            </div>
+        </div>
+        <div class = 'control-container'>
+            <p>Include Numbers</p>
+            <div class="toggle-container" id="toggle2">
+                <input type='checkbox' id="toggle" onclick="toggleOn(this,'toggle2')">
+            </div>
+        </div>
+        <div class = 'control-container'>
+            <p>Character Count</p>
+            <input type="number" id="character-count" min="1" max="15" value="1" pattern="\d*" >
         </div>
     </div>
-        
+<script src="script.js"></script>     
 </body>
 </html>
