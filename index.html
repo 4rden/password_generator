@@ -12,19 +12,27 @@
         <div class = 'control-container'>
             <p>Include Symbols</p>
             <div class="toggle-container" id="toggle1">
-                <input type='checkbox' id="toggle" onclick="toggleOn(this,'toggle1')">
+                <input type='checkbox' id="toggle" onclick="toggleOn('toggle1')">
             </div>
         </div>
         <div class = 'control-container'>
             <p>Include Numbers</p>
             <div class="toggle-container" id="toggle2">
-                <input type='checkbox' id="toggle" onclick="toggleOn(this,'toggle2')">
+                <input type='checkbox' id="toggle" onclick="toggleOn('toggle2')">
             </div>
         </div>
         <div class = 'control-container'>
             <p>Character Count</p>
-            <input type="number" id="character-count" min="1" max="15" value="1" pattern="\d*" >
+            <input type="number" id="character-count" min="1" max="15" value="1" >
         </div>
+        <div class = "btn-container">
+            <button id="btn-generate">Generate Password</button>
+        </div>
+        <div class = "password-container trace"> 
+            <input type="text" id="password-text">
+            <button id="copy"><img src='copy.png'></button>
+        </div>
+        <p id="copied"></p>
     </div>
 <script src="script.js"></script>     
 </body>

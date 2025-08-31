@@ -1,15 +1,16 @@
-const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", 
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-    "~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?", "/"];
+const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+const symbols = [ "~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?", "/"];
+const numbers = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
 
-let value = 0
-
+let includeSymbol = false; 
+let includeNumbers = false; 
+let el = ''
 // Toggle design function for button
 
-function toggleOn(btn,toggle) { 
-    let el = document.getElementById(toggle);
+function toggleOn(toggle) { 
+    el = document.getElementById(toggle);
     el.classList.toggle('on');
-    console.log('on');
+    console.log(el.classList.contains('on'));
 }
 
 // setting number input back to max
@@ -27,20 +28,50 @@ let numberInput = document.getElementById("character-count")
 // preventing the user from going above or below in the number input
 
   numberInput.addEventListener("input", () => {
-    value = parseInt(numberInput.value, 10);
-    let valueString = numberInput.value;
+    let value = parseInt(numberInput.value, 10);
     let min   = parseInt(numberInput.min, 10);
     let max   = parseInt(numberInput.max, 10);
 
-    // if blank return none
-    if (isNaN(value)) return;
-
-    // if above or below return blank
-    if (value < min) {
-      numberInput.value = "";
-    } else if (value > max) {
-      numberInput.value = "";
-    } 
+    if (isNaN(value) || value < min || value > max) { 
+        numberInput.value = " ";
+    }
   });
 
-console.log(numberValue)
+
+// Generating the Password 
+const generatePassword = document.getElementById('btn-generate')
+const passwordText = document.getElementById('password-text')
+
+generatePassword.addEventListener('click', () => { 
+    let value = parseInt(numberInput.value, 10);
+    let passwordArray = letters;
+    
+    if (document.getElementById('toggle1').classList.contains('on')) { 
+        passwordArray = passwordArray.concat(symbols);
+    }
+
+    if (document.getElementById('toggle2').classList.contains('on')) { 
+        passwordArray = passwordArray.concat(numbers)
+    }
+    
+    let out = ""
+    for (let i = 0 ; i < value ; i ++) { 
+        randomNumber = Math.floor(Math.random() * passwordArray.length)
+        out += passwordArray[randomNumber]
+    }
+
+    passwordText.value = out
+})
+
+// copy buttom 
+
+const copyBtn = document.getElementById('copy')
+
+copyBtn.addEventListener('click', () => { 
+    navigator.clipboard.writeText(passwordText.value)
+    document.getElementById('copied').textContent = "Password Copied"
+
+    setTimeout(() => {
+        document.getElementById('copied').textContent = ""
+    },1500)
+})
