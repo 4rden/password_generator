@@ -2,13 +2,10 @@ const letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P
 const symbols = [ "~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?", "/"];
 const numbers = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",];
 
-let includeSymbol = false; 
-let includeNumbers = false; 
-let el = ''
 // Toggle design function for button
 
 function toggleOn(toggle) { 
-    el = document.getElementById(toggle);
+    let el = document.getElementById(toggle);
     el.classList.toggle('on');
     console.log(el.classList.contains('on'));
 }
@@ -29,8 +26,8 @@ let numberInput = document.getElementById("character-count")
 
   numberInput.addEventListener("input", () => {
     let value = parseInt(numberInput.value, 10);
-    let min   = parseInt(numberInput.min, 10);
-    let max   = parseInt(numberInput.max, 10);
+    const min   = parseInt(numberInput.min, 10);
+    const max   = parseInt(numberInput.max, 10);
 
     if (isNaN(value) || value < min || value > max) { 
         numberInput.value = " ";
@@ -43,7 +40,7 @@ const generatePassword = document.getElementById('btn-generate')
 const passwordText = document.getElementById('password-text')
 
 generatePassword.addEventListener('click', () => { 
-    let value = parseInt(numberInput.value, 10);
+    const value = parseInt(numberInput.value, 10);
     let passwordArray = letters;
     
     if (document.getElementById('toggle1').classList.contains('on')) { 
