@@ -53,7 +53,7 @@ generatePassword.addEventListener('click', () => {
     
     let out = ""
     for (let i = 0 ; i < value ; i ++) { 
-        let randomNumber = Math.floor(Math.random() * passwordArray.length)
+        const randomNumber = Math.floor(Math.random() * passwordArray.length)
         out += passwordArray[randomNumber]
     }
 
